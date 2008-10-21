@@ -1,0 +1,12 @@
+#include <appinfo.rh>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0x07BD6D0C
+
+RESOURCE APP_REGISTRATION_INFO
+  {
+  app_file="batata";
+
+  embeddability=KAppNotEmbeddable;
+  newfile=KAppDoesNotSupportNewFile;
+  }

@@ -1,0 +1,42 @@
+/*
+============================================================================
+ Name		: Batata.mmp
+ Author	  : 
+ Copyright   : Your copyright notice
+ Description : This is the project specification file for Batata.
+============================================================================
+*/
+
+TARGET		  Batata.exe
+TARGETTYPE	  exe
+UID 0x100039CE 0x07BD6D0C
+
+SYSTEMINCLUDE   \epoc32\include \epoc32\include\stdapis
+
+#ifdef ENABLE_ABIV2_MODE
+DEBUGGABLE
+#endif
+SOURCEPATH ..\src
+SOURCE gambi.cpp CGameController.cpp CGameEventReceiver.cpp CGame.cpp CGameSprite.cpp
+
+START RESOURCE  batata_reg.rss
+#ifdef WINSCW
+TARGETPATH 	    \private\10003a3f\apps
+#else
+TARGETPATH 	    \private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+LIBRARY libc.lib euser.lib cone.lib ws32.lib
+LIBRARY         apparc.lib eikcore.lib
+LIBRARY         eikcoctl.lib avkon.lib efsrv.lib
+LIBRARY         estlib.lib fbscli.lib ImageConversion.lib
+LIBRARY         libgles_cm.lib
+
+STATICLIBRARY libcrt0.lib
+USERINCLUDE ..\inc ..\utils
+
+SOURCEPATH ..\utils
+SOURCE Glutils.cpp Mathutils.cpp Textureutils.cpp Utils3d.cpp
+SOURCEPATH ..\src
+SOURCE main.cpp
