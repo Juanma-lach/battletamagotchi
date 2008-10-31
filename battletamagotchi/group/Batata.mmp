@@ -33,7 +33,7 @@ LIBRARY         eikcoctl.lib avkon.lib efsrv.lib
 LIBRARY         estlib.lib fbscli.lib ImageConversion.lib
 LIBRARY         libgles_cm.lib
 
-STATICLIBRARY libcrt0.lib
+STATICLIBRARY libcrt0.lib libGLES_CM.lib
 USERINCLUDE ..\inc ..\utils
 
 SOURCEPATH ..\utils

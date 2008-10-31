@@ -2,11 +2,11 @@
 #define __CLASS_GAME_H_
 
 #include "gambi.h"
+#include <gles/gl.h>
 #include "CGameSprite.h"
 
 #include <e32base.h>
 #include <e32keys.h>
-#include <gles/gl.h>
 
 const TInt KErrDisplayNotCreated = -5001;
 const TInt KErrDisplayNotInitialized = -5002;
@@ -37,7 +37,16 @@ class CGame {
 	    TBool render( TInt64 aDurationSinceLastVisit );	    	            
 	    void deinit();	    	        
 	    void handle_key( TUint32 aKey, TBool aIsKeyUp );	    
-	    void set_screen_size( TUint aScreenWidth, TUint aScreenHeight );	
+	    void set_screen_size( TUint aScreenWidth, TUint aScreenHeight );
+	    TInt getScreenWidth()
+	    {
+	    	return this->iScreenWidth;
+		}
+	    
+	    TInt getScreenHeight()
+	    {
+	    	return this->iScreenHeight;
+	    }
 	    
 	    TUint get_frame() const
 	    {

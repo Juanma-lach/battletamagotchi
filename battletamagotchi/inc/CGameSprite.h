@@ -4,38 +4,41 @@
 #define SIZE 256
 
 #include <fbs.h>
+#include "CGame.h"
 #include "CGameRect.h" 
-
-#include "Textureutils.h"
 #include "CReferenceCounter.h"
+
+class CGame;
 
 class CGameSpriteFrame {
 
 		TUint32* pixels;
-		int ms;
+		GLuint texId;
 	
 	public:
 	
+		CGameSpriteFrame(const TFileName& filename, TUint32 id, CFbsBitmap* loader);
+		~CGameSpriteFrame();
+		void draw(const CGameRect& r, TInt layer);
 		
 };
 
-class CGameSprite : public CReferenceCounter, public MTextureLoadingListener {
+class CGameSprite : public CReferenceCounter {
 
-		//CFbsBitmap* iBitmap;		
-		CGameSpriteFrame* frames;
+		RArray<CGameSpriteFrame*> frames;
+		CGameRect size;
+		CGame* game;
+		TInt layer;
 
 	public:
-	
-		TUint32* data;
-		CGameSprite(TPtrC filename, TUint8 * colorKey, CGameRect* clips, TUint32* times, TUint32 num);
+			
+		CGameSprite(CGame* game, TPtrC filename, TUint32 num);
 		~CGameSprite();
 		
-		/** Called by the CTextureManager when it starts to load textures. */
-		virtual void OnStartLoadingTexturesL(){}
-		/** Called by the CTextureManager when it has loaded all the textures in the queue. */
-		virtual void OnEndLoadingTexturesL(){}
-		
-		TUint32* getData(void){return this->data;}
+		void setSize(const CGameRect& size){this->size = size;}
+		CGameRect getSize(){return this->size;}
+		void setLayer(TInt l){this->layer = l;}
+		void draw();
 };
 
 #endif
