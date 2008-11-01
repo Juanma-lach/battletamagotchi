@@ -1,7 +1,7 @@
 #ifndef __CLASS_GAME_SPRITE_H_
 #define __CLASS_GAME_SPRITE_H_
 
-#define SIZE 256
+//#define SIZE 256
 
 #include <fbs.h>
 #include "CGame.h"
@@ -13,11 +13,12 @@ class CGame;
 class CGameSpriteFrame {
 
 		TUint32* pixels;
+		TInt texDim;
 		GLuint texId;
 	
 	public:
 	
-		CGameSpriteFrame(const TFileName& filename, TUint32 id, CFbsBitmap* loader);
+		CGameSpriteFrame(const TFileName& filename, TUint32 id, const CGameRect& r, CFbsBitmap* loader);
 		~CGameSpriteFrame();
 		void draw(const CGameRect& r, TInt layer);
 		
@@ -32,7 +33,7 @@ class CGameSprite : public CReferenceCounter {
 
 	public:
 			
-		CGameSprite(CGame* game, TPtrC filename, TUint32 num);
+		CGameSprite(CGame* game, TPtrC filename, const CGameRect& r, TUint32 num);
 		~CGameSprite();
 		
 		void setSize(const CGameRect& size){this->size = size;}

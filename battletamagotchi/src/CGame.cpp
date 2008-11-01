@@ -85,12 +85,13 @@ void CGame::init_screen( TUint aScreenWidth, TUint aScreenHeight )
     glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_FASTEST );	
     glEnable(GL_TEXTURE_2D);
     
-    c = new CGameSprite(this, _L("lena.mbm"), 1);
-    CGameRect size(0,0, this->iScreenWidth, this->iScreenHeight);
-    c->setSize(size);
+    CGameRect size(50,50, 256/*this->iScreenWidth*/, 128/*this->iScreenHeight*/);
+    c = new CGameSprite(this, _L("lena.mbm"), size, 1);
+    //c->setSize(size);
     	
-    d = new CGameSprite(this, _L("lena.mbm"), 1);
-    size = CGameRect(100,100,150,150);
+    size = CGameRect(0,0,128,256);
+    d = new CGameSprite(this, _L("lena.mbm"), size, 1);
+    size = CGameRect(100,100,100,100);
     d->setSize(size);
     d->setLayer(1);
 }
@@ -111,7 +112,7 @@ TBool CGame::render( TInt64 aMicrosSinceLastVisit )
     glClear(GL_DEPTH_BUFFER_BIT);
  
     c->draw();
-    //d->draw();
+    d->draw();
     
     ++iFrame;
      
