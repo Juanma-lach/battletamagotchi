@@ -1,20 +1,20 @@
-#include "CGameEventReceiver.h"
+#include "event/CSymbianEventReceiver.h"
 #include <coemain.h>
 
-CGameEventReceiver::CGameEventReceiver()
+CSymbianEventReceiver::CSymbianEventReceiver()
                  :CActive( CActive::EPriorityStandard ),
                   iParent( NULL )
 {                      
 }
 
-CGameEventReceiver::~CGameEventReceiver()
+CSymbianEventReceiver::~CSymbianEventReceiver()
 {
     Cancel();
 }
 
-CGameEventReceiver* CGameEventReceiver::get_new( CGameController& aParent )
+CSymbianEventReceiver* CSymbianEventReceiver::get_new( CGameController& aParent )
 {
-	CGameEventReceiver* self = new (ELeave) CGameEventReceiver;
+	CSymbianEventReceiver* self = new (ELeave) CSymbianEventReceiver;
     
     stack_push(self);
     
@@ -25,7 +25,7 @@ CGameEventReceiver* CGameEventReceiver::get_new( CGameController& aParent )
     return self;    
 }
 
-void CGameEventReceiver::init( CGameController& aParent )
+void CSymbianEventReceiver::init( CGameController& aParent )
 {
     if( !CCoeEnv::Static() )
         User::Leave( KErrCoeEnvNotCreated );
@@ -41,7 +41,7 @@ void CGameEventReceiver::init( CGameController& aParent )
     SetActive();
 }
 
-void CGameEventReceiver::RunL()
+void CSymbianEventReceiver::RunL()
 {
     TWsEvent wsEvent;
     iWsSession.GetEvent( wsEvent );
@@ -53,7 +53,7 @@ void CGameEventReceiver::RunL()
     SetActive();
 }
 
-void CGameEventReceiver::DoCancel()
+void CSymbianEventReceiver::DoCancel()
 {
     iWsSession.EventReadyCancel();
 }

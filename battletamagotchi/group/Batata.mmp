@@ -17,7 +17,7 @@ SYSTEMINCLUDE   \epoc32\include \epoc32\include\stdapis
 DEBUGGABLE
 #endif
 SOURCEPATH ..\src
-SOURCE gambi.cpp CGameController.cpp CGameEventReceiver.cpp CGame.cpp CGameSprite.cpp
+SOURCE gambi.cpp CGameController.cpp CSymbianEventReceiver.cpp CGame.cpp CGameSprite.cpp
 
 START RESOURCE  batata_reg.rss
 #ifdef WINSCW
@@ -39,4 +39,4 @@ USERINCLUDE ..\inc ..\utils
 SOURCEPATH ..\utils
 SOURCE Glutils.cpp Mathutils.cpp Textureutils.cpp Utils3d.cpp
 SOURCEPATH ..\src
-SOURCE main.cpp
+SOURCE main.cpp CGameRender.cpp

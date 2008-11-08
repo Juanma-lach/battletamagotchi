@@ -4,11 +4,11 @@
 //#define SIZE 256
 
 #include <fbs.h>
-#include "CGame.h"
-#include "CGameRect.h" 
-#include "CReferenceCounter.h"
+//#include "CGame.h"
+#include "base/CGameRect.h" 
+#include "base/CReferenceCounter.h"
 
-class CGame;
+//class CGameSpriteFrame;
 
 class CGameSpriteFrame {
 
@@ -20,11 +20,16 @@ class CGameSpriteFrame {
 	
 		CGameSpriteFrame(const TFileName& filename, TUint32 id, const CGameRect& r, CFbsBitmap* loader);
 		~CGameSpriteFrame();
-		void draw(const CGameRect& r, TInt layer);
+		//void draw(const CGameRect& r, TInt layer);
+		TUint32* getPixels(){return this->pixels;}
+		GLuint getTexID(){return this->texId;}
+		TInt getTexDim(){return this->texDim;}
 		
 };
 
-class CGameSprite : public CReferenceCounter {
+class CGame;
+
+class CGameSprite /*: public CReferenceCounter*/ {
 
 		RArray<CGameSpriteFrame*> frames;
 		CGameRect size;
@@ -36,10 +41,11 @@ class CGameSprite : public CReferenceCounter {
 		CGameSprite(CGame* game, TPtrC filename, const CGameRect& r, TUint32 num);
 		~CGameSprite();
 		
-		void setSize(const CGameRect& size){this->size = size;}
-		CGameRect getSize(){return this->size;}
+		//void setSize(const CGameRect& size){this->size = size;}
+		//CGameRect getSize(){return this->size;}
 		void setLayer(TInt l){this->layer = l;}
-		void draw();
+		TInt getLayer(void){return this->layer;}
+		//void draw();
 };
 
 #endif

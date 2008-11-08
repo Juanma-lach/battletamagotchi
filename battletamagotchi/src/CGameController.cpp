@@ -1,7 +1,7 @@
 #include "CGameController.h"
 #include <coemain.h>
 
-#include "CGameEventReceiver.h"
+#include "event/CSymbianEventReceiver.h"
 
 CGameController::CGameController(EGLDisplay aEGLDisplay)
 				:iEglDisplay( aEGLDisplay ),
@@ -111,7 +111,7 @@ void CGameController::init(void){
 	}
 	
 	// Creates the Active Object that waits for Windows Server events.
-	iWsEventReceiver = CGameEventReceiver::get_new(*this);
+	iWsEventReceiver = CSymbianEventReceiver::get_new(*this);
 }
 
 void CGameController::start_game(CGame& aGame)

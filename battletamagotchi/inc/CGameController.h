@@ -7,7 +7,7 @@
 
 #include "CGame.h"
 class RWindow;
-class CGameEventReceiver;
+class CSymbianEventReceiver;
 
 class CGameController : public CBase {
 	
@@ -39,7 +39,7 @@ class CGameController : public CBase {
 	    RWindow* iWindow;
 
 	    /** The Active Object that waits for Windows Server Events */    
-	    CGameEventReceiver* iWsEventReceiver;
+	    CSymbianEventReceiver* iWsEventReceiver;
 	    
 	    /** The Game */
 	    CGame* iGame;

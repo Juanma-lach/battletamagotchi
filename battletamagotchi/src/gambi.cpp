@@ -1,5 +1,5 @@
 #include <e32base.h> // for Symbian classes.
-#include "gambi.h"
+#include "base/gambi.h"
 
 static TInt stack_counter = 0;
 

@@ -2,9 +2,9 @@
 #define __CLASS_GAME_EVENT_RECEIVER_H_
 
 #include "CGameController.h"
-#include "gambi.h"
+#include "base/gambi.h"
 
-class CGameEventReceiver : public CActive {
+class CSymbianEventReceiver : public CActive {
 
 	public: 
 	    /**
@@ -26,18 +26,18 @@ class CGameEventReceiver : public CActive {
 	     *
 	     * @param aParent The Game Controller requesting for the events.
 	     */    
-	    static CGameEventReceiver* get_new( CGameController& aParent );
+	    static CSymbianEventReceiver* get_new( CGameController& aParent );
 	    
 	    /**
 	     * Destructor.
 	     */    
-	    ~CGameEventReceiver();
+	    ~CSymbianEventReceiver();
 	
 	private: // Constructors
 	    /**
 	     * Constructor.
 	     */
-		CGameEventReceiver();
+		CSymbianEventReceiver();
 	
 	    /**
 	     * Two phase Constructor.

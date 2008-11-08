@@ -2,8 +2,7 @@
 #include <e32base.h>
 #include <unistd.h>  // for usleep.
 
-CGameSprite* c;
-CGameSprite* d;
+CGameSprite *c, *d;
 
 /*
 #define FRUSTUM_LEFT   -1.f     //left vertical clipping plane
@@ -92,7 +91,7 @@ void CGame::init_screen( TUint aScreenWidth, TUint aScreenHeight )
     size = CGameRect(0,0,128,256);
     d = new CGameSprite(this, _L("lena.mbm"), size, 1);
     size = CGameRect(100,100,100,100);
-    d->setSize(size);
+    //d->setSize(size);
     d->setLayer(1);
 }
 
@@ -111,8 +110,8 @@ TBool CGame::render( TInt64 aMicrosSinceLastVisit )
     glClear(GL_COLOR_BUFFER_BIT);
     glClear(GL_DEPTH_BUFFER_BIT);
  
-    c->draw();
-    d->draw();
+    //c->draw();
+    //d->draw();
     
     ++iFrame;
      

@@ -2,7 +2,7 @@
 #include <e32base.h>
 #include <coemain.h>
 
-#include "gambi.h"
+#include "base/gambi.h"
 #include "CGame.h"
 #include "CGameController.h"
 

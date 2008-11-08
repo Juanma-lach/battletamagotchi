@@ -1,29 +1,7 @@
 #include "CGameSprite.h"
-#include "gambi.h"
+#include "base/gambi.h"
 #include <gles/gl.h> 
 #include <stdio.h>
-
-static const GLbyte vertices[4 * 3] =
-     {
-      0,  1,  0,
-      1,  1,  0,
-      1,  0,  0,
-      0,  0,  0,
-     };
-
-/*static const GLfloat tex_coord[4 * 2] =
-     {
-      1,  0,
-      0,  0,
-      0,  1,
-      1,  1,      
-     };*/
-
-static const GLubyte triangles[2 * 3] =
-    { 
-    1,0,3,
-    1,3,2,
-    };
 
 TInt minor2Pot(TInt val){
 	
@@ -63,13 +41,9 @@ CGameSprite::CGameSprite(CGame* game, TPtrC filename, const CGameRect& r, TUint3
 
 }
 
-CGameSprite::~CGameSprite(){
-	
-}
-
-void CGameSprite::draw(void){
+/*void CGameSprite::draw(void){
 	this->frames[0]->draw(this->size, this->layer);
-}
+}*/
 
 CGameSpriteFrame::CGameSpriteFrame(const TFileName& filename, TUint32 id, const CGameRect& r, CFbsBitmap* loader){
 
@@ -116,7 +90,7 @@ CGameSpriteFrame::CGameSpriteFrame(const TFileName& filename, TUint32 id, const 
 	
 }
 
-void CGameSpriteFrame::draw(const CGameRect& r, TInt layer){
+/*void CGameSpriteFrame::draw(const CGameRect& r, TInt layer){
 
 	//printf("Largura e altura: %d %d\n", r.w, r.h);
 
@@ -141,7 +115,7 @@ void CGameSpriteFrame::draw(const CGameRect& r, TInt layer){
 	glDrawElements( GL_TRIANGLES, 2 * 3, GL_UNSIGNED_BYTE, triangles );
 	
 	glPopMatrix();
-}
+}*/
 
 CGameSpriteFrame::~CGameSpriteFrame(){
 	delete [] this->pixels;

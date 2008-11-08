@@ -1,12 +1,18 @@
 #ifndef __CLASS_GAME_H_
 #define __CLASS_GAME_H_
 
-#include "gambi.h"
+#include "base/gambi.h"
 #include <gles/gl.h>
+#include "event/IGameEventReceiver.h"
 #include "CGameSprite.h"
+#include "CGameRender.h"
 
 #include <e32base.h>
 #include <e32keys.h>
+
+class CGameKeyEvent;
+class CGameLogicalEvent;
+class CGameCollisionEvent;
 
 const TInt KErrDisplayNotCreated = -5001;
 const TInt KErrDisplayNotInitialized = -5002;
@@ -53,8 +59,13 @@ class CGame {
 	        return iFrame;
 	    }
 	    
+	    void addKeyEventListener(IGameEventReceiver<CGameKeyEvent> r);
+	    void addLogicalEventListener(IGameEventReceiver<CGameLogicalEvent> r);
+	    void addCollisionEventListener(IGameEventReceiver<CGameCollisionEvent> r);
+	    
 	private:
 	    
+		CGameRender render;
 	    TInt iScreenWidth;	    
 	    TInt iScreenHeight;	    
 	    TBool iGameOver;	    
