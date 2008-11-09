@@ -5,7 +5,7 @@ template <class EventType> class IGameEventReceiver {
 
 	public:
 		
-		virtual receiveEvent(EventType e) = 0;
+		virtual void receiveEvent(EventType e) = 0;
 	
 };
 

@@ -4,6 +4,7 @@
 //#define SIZE 256
 
 #include <fbs.h>
+#include <gles/gl.h>
 //#include "CGame.h"
 #include "base/CGameRect.h" 
 #include "base/CReferenceCounter.h"
@@ -21,9 +22,9 @@ class CGameSpriteFrame {
 		CGameSpriteFrame(const TFileName& filename, TUint32 id, const CGameRect& r, CFbsBitmap* loader);
 		~CGameSpriteFrame();
 		//void draw(const CGameRect& r, TInt layer);
-		TUint32* getPixels(){return this->pixels;}
-		GLuint getTexID(){return this->texId;}
-		TInt getTexDim(){return this->texDim;}
+		//TUint32* getPixels(){return this->pixels;}
+		GLuint getTexID(void){return this->texId;}
+		TInt getTexDim(void){return this->texDim;}
 		
 };
 
@@ -39,7 +40,7 @@ class CGameSprite /*: public CReferenceCounter*/ {
 	public:
 			
 		CGameSprite(CGame* game, TPtrC filename, const CGameRect& r, TUint32 num);
-		~CGameSprite();
+		//~CGameSprite();
 		
 		//void setSize(const CGameRect& size){this->size = size;}
 		//CGameRect getSize(){return this->size;}

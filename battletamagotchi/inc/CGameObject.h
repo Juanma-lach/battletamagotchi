@@ -8,8 +8,6 @@ class CGameObject {
 
 	RArray<CGameSprite> anim;
 		
-	bool collides;
-	
 	TInt layer;
 	
 	public:
@@ -20,13 +18,12 @@ class CGameObject {
 		
 		TInt verifyCollision(CGameRect& r);
 		
-		const CGameSpriteFrame* getCurrentSpriteFrame(void);
+		CGameSpriteFrame* getCurrentSpriteFrame(void);
 		
 		TInt getLayer(void);
 		void setLayer(TInt l);
 		
-		bool collides(void);
-		void setCollisionFlag(bool f);
+		bool collides;
 		
 	enum COL_RETURN {
 		COL_DONT_COLLIDES_FLAG,

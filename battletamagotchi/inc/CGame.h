@@ -65,7 +65,7 @@ class CGame {
 	    
 	private:
 	    
-		CGameRender render;
+		CGameRender renderer;
 	    TInt iScreenWidth;	    
 	    TInt iScreenHeight;	    
 	    TBool iGameOver;	    

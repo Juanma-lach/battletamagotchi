@@ -23,7 +23,7 @@ static const GLubyte triangles[2 * 3] =
     	1,3,2,
     };
 
-static void ogl_draw(TUint32* pixels, const CGameRect& r, TInt texDim, TInt layer, GLuint texID){
+static void ogl_draw(const CGameRect& r, TInt texDim, TInt layer, GLuint texID){
 
 	const GLfloat tex_coord[4 * 2] =
  	{
@@ -52,10 +52,10 @@ void CGameRender::addGameObject(CGameObject* o){
 	if(this->objs.Find(o) == KErrNotFound) this->objs.Append(o);
 }
 
-CgameObject* CGameRender::removeGameObject(CGameObject* o){
+CGameObject* CGameRender::removeGameObject(CGameObject* o){
 	TInt i = this->objs.Find(o);
 	if(i == KErrNotFound) return NULL;
-	CGameObject* o = this->objs[i];
+	o = this->objs[i];
 	this->objs.Remove(i);
 	return o;
 }
@@ -63,10 +63,9 @@ CgameObject* CGameRender::removeGameObject(CGameObject* o){
 void CGameRender::draw(){
 	
 	TInt i, size = this->objs.Count();
-	TInt x, y, w, h;
 	
 	for(i=0; i<size;i++){
 		CGameSpriteFrame* sf = objs[i]->getCurrentSpriteFrame();
-		ogl_draw(sf->getPixels(), objs[i]->rect, sf->getTexDim(), objs[i]->getLayer(), sf->getTexID());
+		ogl_draw(objs[i]->rect, sf->getTexDim(), objs[i]->getLayer(), sf->getTexID());
 	}
 }
